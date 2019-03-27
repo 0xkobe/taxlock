@@ -67,6 +67,6 @@
     "webpack-cli": "^3.2.1"
   },
   "engines": {
-    "node": "11.9"
+    "node": "11.9.0"
   }
 }
