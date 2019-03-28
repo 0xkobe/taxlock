@@ -14,7 +14,15 @@ config :taxlock, TaxlockWeb.Endpoint,
   url: [scheme: "https", host: "taxlock.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
-  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
+  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
+  live_reload: [
+    patterns: [
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{priv/gettext/.*(po)$},
+      ~r{lib/taxlock_web/views/.*(ex)$},
+      ~r{lib/taxlock_web/templates/.*(eex)$}
+    ]
+  ]
 
 # Do not print debug messages in production
 config :logger, level: :info
