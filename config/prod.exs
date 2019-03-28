@@ -15,21 +15,13 @@ config :taxlock, TaxlockWeb.Endpoint,
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
   secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
-  live_reload: [
-    patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
-      ~r{priv/gettext/.*(po)$},
-      ~r{lib/taxlock_web/views/.*(ex)$},
-      ~r{lib/taxlock_web/templates/.*(eex)$}
-    ]
-  ]
 
 # Do not print debug messages in production
 config :logger, level: :info
 
 # Configure your database
 config :taxlock, Taxlock.Repo,
-  adapter: Ecto.Adapters.Postgres,
+  # adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
   ssl: true
